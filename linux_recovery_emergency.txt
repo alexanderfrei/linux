@@ -1,0 +1,17 @@
+Use serial console
+Reset VM HARD
+Press ESCAPE once, then you will be presented with boot kernel options
+In a boot kernel options, Press "e"
+
+(DO THIS STEP IF YOU DONT HAVE ROOT PW)  
+Go to linux16 to the end of line, add:
+init=/bin/bash           ---> this will allow you to change root password
+Then Press Ctrl+X
+After it goes to bin/bash,    type command:     mount -o remount rw /
+Passwd root
+Exec /sbin/init
+
+Go to emergency mode:
+In a boot kernel options, Press "e"
+
+Add before Linux Disk or before LANG:       systemd.init=emergency.target
