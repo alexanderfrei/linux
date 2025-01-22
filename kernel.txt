@@ -1,0 +1,2 @@
+dnf list --installed kernel
+dnf remove --oldinstallonly --setopt installonly_limit=3 kernel
