@@ -1,0 +1,3 @@
+#lvextend --resizefs -L +10G /dev/mapper/rootvg-rootlv
+
+#lvreduce --resizefs -L 5G /dev/mapper/rootvg-varlv
