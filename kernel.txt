@@ -1,2 +1,8 @@
 dnf list --installed kernel
+
+# to save /boot disk space execute this command to uninstall old kernel
 dnf remove --oldinstallonly --setopt installonly_limit=2 kernel
+
+### Value 1 cannot be used
+### dnf remove --oldinstallonly --setopt installonly_limit=1 kernel
+### Config error: Error parsing --setopt with key 'installonly_limit', value '1': value 1 is not allowed
