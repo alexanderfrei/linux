@@ -1,3 +1,27 @@
-#lvextend --resizefs -L +10G /dev/mapper/rootvg-rootlv
+## 1. This command will add 10G. So if existing size is 2GB, then the final size would be 12GB.
+lvextend --resizefs -L +10G /dev/mapper/rootvg-rootlv
 
-#lvreduce --resizefs -L 5G /dev/mapper/rootvg-varlv
+## Example Output:
+[root@XXXXXXX USERNAME]# lvextend --resizefs -L +10G /dev/mapper/rootvg-rootlv
+  Size of logical volume rootvg/rootlv changed from 2.00 GiB (512 extents) to 12.00 GiB (3072 extents).
+  File system xfs found on rootvg/rootlv mounted at /.
+  Extending file system xfs to 12.00 GiB (12884901888 bytes) on rootvg/rootlv...
+xfs_growfs /dev/rootvg/rootlv
+meta-data=/dev/mapper/rootvg-rootlv isize=512    agcount=4, agsize=131072 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+data     =                       bsize=4096   blocks=524288, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 524288 to 3145728
+xfs_growfs done
+  Extended file system xfs on rootvg/rootlv.
+  Logical volume rootvg/rootlv successfully resized.
+
+
+## 2. This command will reduce by 5GB. Use this with caution!!
+lvreduce --resizefs -L 5G /dev/mapper/rootvg-varlv
